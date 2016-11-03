@@ -6,7 +6,7 @@ require 'network_api_php/src/Client.php';
 
 $behance_client_id = $config['behance']['client_id'];
 $behance_api = new Behance\Client( $behance_client_id );
-$behance_projects = $behance_api->getUserProjects( 'CRISTIANIOfca6' );
+$behance_projects = $behance_api->getUserProjects( $config['behance']['user'] );
 
 $posts = array();
 

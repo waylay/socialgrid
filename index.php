@@ -1,6 +1,14 @@
 <?php
 require 'config.php';
-$posts = require 'behance.php';
+$behance_posts = require 'behance.php';
+$dribbble_posts = require 'dribbble.php';
+$twitter_posts = require 'twitter.php';
+
+$posts = array_merge($behance_posts,$dribbble_posts,$twitter_posts);
+usort($posts,function($a,$b){
+  return $a['date'] < $b['date'];
+});
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -24,6 +32,7 @@ $posts = require 'behance.php';
       					<div class="overlay">
       						<div class="overlay-inner">
       							<h3><?= $post['title'] ?></h3>
+      							<h4 style="color:red"><?= date("Y-m-d",$post['date']) ?></h4>
       						</div>
       					</div>
       					<img src="<?= $post['image'] ?>" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="<?= $post['title'] ?>">
