@@ -3,8 +3,11 @@ require 'config.php';
 $behance_posts = require 'behance.php';
 $dribbble_posts = require 'dribbble.php';
 $twitter_posts = require 'twitter.php';
+$instagram_posts = require 'instagram.php';
+$px500_posts = require '500px.php';
 
-$posts = array_merge($behance_posts,$dribbble_posts,$twitter_posts);
+//$posts = array_merge($behance_posts,$dribbble_posts,$twitter_posts,$instagram_posts);
+$posts = array_merge($px500_posts);
 usort($posts,function($a,$b){
   return $a['date'] < $b['date'];
 });
